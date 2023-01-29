@@ -62,10 +62,10 @@ export default function RegisterAccount() {
       setErrMsg("Please enter a password");
       return false;
     }
-    if (formState.fullname === "") {
-      setErrMsg("Please enter your full name");
-      return false;
-    }
+    // if (formState.fullname === "") {
+    //   setErrMsg("Please enter your full name");
+    //   return false;
+    // }
     if (formState.avatar === "") {
       setErrMsg("Please choose an avatar");
       return false;
@@ -130,7 +130,7 @@ export default function RegisterAccount() {
                 Or{" "}
                 <Link
                   href="/auth/signin"
-                  className="font-medium text-sky-600 hover:text-sky-500">
+                  className="font-medium text-stone-600 hover:text-stone-500">
                   login to existing account
                 </Link>
               </p>
@@ -142,7 +142,7 @@ export default function RegisterAccount() {
               onSubmit={onFormSubmit}>
               <input type="hidden" name="remember" defaultValue="true" />
               <div className="rounded-md shadow-sm -space-y-px">
-                <div>
+                {/* <div>
                   <label htmlFor="full-name" className="sr-only">
                     Full Name
                   </label>
@@ -152,12 +152,12 @@ export default function RegisterAccount() {
                     type="text"
                     autoComplete="text"
                     required
-                    className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-sky-500 focus:border-sky-500 focus:z-10 sm:text-sm"
+                    className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-stone-500 focus:border-stone-500 focus:z-10 sm:text-sm"
                     placeholder="Full Name"
                     onChange={onChangeHandler}
                     value={fullname}
                   />
-                </div>
+                </div> */}
                 <div>
                   <label htmlFor="email-address" className="sr-only">
                     Email address
@@ -168,7 +168,7 @@ export default function RegisterAccount() {
                     type="email"
                     autoComplete="email"
                     required
-                    className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-sky-500 focus:border-sky-500 focus:z-10 sm:text-sm"
+                    className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-stone-500 focus:border-stone-500 focus:z-10 sm:text-sm"
                     placeholder="Email address"
                     onChange={onChangeHandler}
                     value={email}
@@ -184,7 +184,7 @@ export default function RegisterAccount() {
                     type="password"
                     autoComplete="current-password"
                     required
-                    className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-sky-500 focus:border-sky-500 focus:z-10 sm:text-sm"
+                    className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-stone-500 focus:border-stone-500 focus:z-10 sm:text-sm"
                     placeholder="Password"
                     onChange={onChangeHandler}
                     value={password}
@@ -192,13 +192,13 @@ export default function RegisterAccount() {
                 </div>
 
                 {/* Choose region */}
-                <div className="relative">
+                {/* <div className="relative">
                   <select
                     id="region"
                     name="region"
                     autoComplete="region"
                     required
-                    className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-sky-500 focus:border-sky-500 focus:z-10 sm:text-sm"
+                    className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-stone-500 focus:border-stone-500 focus:z-10 sm:text-sm"
                     placeholder="Region"
                     onChange={onChangeHandler}
                     value={region}>
@@ -209,7 +209,7 @@ export default function RegisterAccount() {
                       </option>
                     ))}
                   </select>
-                </div>
+                </div> */}
 
                 {/* Choose Avatar */}
                 <div className="pt-3">
@@ -224,16 +224,16 @@ export default function RegisterAccount() {
               <div>
                 <button
                   type="submit"
-                  className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-sky-600 hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500">
+                  className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-stone-600 hover:bg-stone-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-stone-500">
                   <span className="absolute left-0 inset-y-0 flex items-center pl-3">
                     {loading ? (
                       <RefreshIcon
-                        className="h-5 w-5 text-sky-200 animate-spin"
+                        className="h-5 w-5 text-stone-200 animate-spin"
                         aria-hidden="true"
                       />
                     ) : (
                       <PencilAltIcon
-                        className="h-5 w-5 text-sky-500 group-hover:text-sky-400"
+                        className="h-5 w-5 text-stone-500 group-hover:text-stone-400"
                         aria-hidden="true"
                       />
                     )}

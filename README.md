@@ -1,7 +1,7 @@
 # Photo Uploader Project
 
 Please note - this is part of an open source project written by me, Joe Gilmore - you can read the full details of this project here
-[https://joemore.com/photo-uploader-with-aws-serverless-nextjs-and-tailwind/](joemore.com/photo-uploader--with-aws-serverless-nextjs-and-tailwind/)
+[https://www.joemore.com/photo-uploader-with-aws-serverless-nextjs-and-tailwind/](joemore.com/photo-uploader--with-aws-serverless-nextjs-and-tailwind/)
 
 You will need the backend AWS service installed to run this project - you can find the backend code here
 [Backend Repo](https://github.com/joemore/aws-serverless-photo-uploader)

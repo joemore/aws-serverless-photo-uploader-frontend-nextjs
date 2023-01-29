@@ -45,7 +45,7 @@ const itemsSignedIn = [
     name: "Photo Uploader",
     description: "Upload Photos to S3 and Save in DynamoDB",
     href: "/auth/photo-uploader",
-    iconColor: "bg-sky-500",
+    iconColor: "bg-stone-500",
     icon: ArrowUpTrayIcon,
   },
 ];
@@ -67,7 +67,7 @@ export default function HomepageIntro(props: PageProps) {
         it uses a backend system built using this{" "}
         <Link
           href="https://github.com/joemore/aws-serverless-photo-uploader"
-          className="text-sky-600">
+          className="text-stone-600">
           AWS ServerLess backend
         </Link>
       </p>
@@ -110,8 +110,8 @@ export default function HomepageIntro(props: PageProps) {
       </ul>
       <div className="mt-6 flex">
         <Link
-          href="/about"
-          className="text-sm font-medium text-indigo-600 hover:text-indigo-500">
+          href="https://www.joemore.com/photo-uploader-with-aws-serverless-nextjs-and-tailwind/"
+          className="text-sm font-medium text-stone-600 hover:text-stone-500">
           Read more about this project
           <span aria-hidden="true"> &rarr;</span>
         </Link>

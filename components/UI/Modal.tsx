@@ -73,7 +73,7 @@ export default function Modal(props: any) {
                         : type === "error"
                         ? "bg-red-600 hover:bg-red-700 focus:ring-red-500"
                         : //Default:
-                          "bg-sky-600 hover:bg-sky-700 focus:ring-sky-500",
+                          "bg-stone-600 hover:bg-stone-700 focus:ring-stone-500",
                       `inline-flex justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2  
                         text-base font-medium text-white focus:outline-none focus:ring-2 focus:ring-offset-2 sm:text-sm`
                     )}

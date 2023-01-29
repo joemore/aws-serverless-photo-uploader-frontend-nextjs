@@ -245,7 +245,7 @@ export default function PhotoUploader() {
                   className={clsx(
                     uploadTrigger
                       ? "text-gray-300 focus:ring-gray-300"
-                      : "text-indigo-600 focus:ring-indigo-500",
+                      : "text-stone-600 focus:ring-stone-500",
                     `h-4 w-4 rounded border-gray-300 `
                   )}
                   checked={uploadOriginal}

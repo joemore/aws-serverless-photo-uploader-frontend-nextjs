@@ -1,24 +1,27 @@
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, useEffect } from "react";
 
 import { Popover, Transition } from "@headlessui/react";
 import {
-  Bars3Icon,
-  XMarkIcon,
-  UserIcon,
   ArrowRightOnRectangleIcon,
+  Bars3Icon,
+  UserIcon,
+  XMarkIcon,
 } from "@heroicons/react/24/outline";
 import { UserIcon as UserIconSolid } from "@heroicons/react/24/solid";
-import Link from "next/link";
-import { GiMicrochip, GiHotDog } from "react-icons/gi";
-import MenuDropDown from "./MenuDropDown";
 import { Auth } from "aws-amplify";
-import { useStateValue, LoginState } from "../../context/state";
+import Link from "next/link";
 import { useRouter } from "next/router";
+import { GiHotDog } from "react-icons/gi";
+import { LoginState, useStateValue } from "../../context/state";
+import MenuDropDown from "./MenuDropDown";
 
 export default function MainNav() {
   const navigation = [
     { name: "Home", href: "/" },
-    { name: "About", href: "/about" },
+    {
+      name: "About",
+      href: "https://www.joemore.com/photo-uploader-with-aws-serverless-nextjs-and-tailwind/",
+    },
   ];
 
   const router = useRouter();
@@ -58,27 +61,29 @@ export default function MainNav() {
         ]
       : [
           {
+            key: "profile",
+            name: (
+              <div>
+                <span>
+                  {" "}
+                  <UserIcon className="w-6 h-6 inline mr-1" />
+                  <span className="ml-2">{user?.email} </span>
+                </span>
+              </div>
+            ),
+            href: "/auth/profile",
+          },
+          {
             key: "signout",
             name: (
               <span>
                 {" "}
-                <ArrowRightOnRectangleIcon className="w-4 h-4 inline mr-1" />{" "}
-                Sign out
+                <ArrowRightOnRectangleIcon className="w-6 h-6 inline mr-1" />
+                <span className="ml-2">Sign out</span>
               </span>
             ),
             href: "#signout",
             onClick: signOut,
-          },
-          {
-            key: "profile",
-            name: (
-              <span>
-                {" "}
-                <UserIcon className="w-4 h-4 inline mr-1" /> {user?.name}{" "}
-              </span>
-            ),
-            href: "/auth/profile",
-            // onClick: () => Auth.signOut().then(() => { setLoginState(LoginState.NotSignedIn); router.replace('/auth/signin'); })
           },
         ]),
   ];
@@ -87,7 +92,7 @@ export default function MainNav() {
     <Popover as="header" className="relative">
       {({ open, close }) => (
         <>
-          <div className="bg-gradient-to-r from-sky-800 to-cyan-600 p-6">
+          <div className="bg-gradient-to-r from-stone-800 to-stone-600 p-6">
             <nav
               className="relative max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6"
               aria-label="Global">
@@ -100,7 +105,7 @@ export default function MainNav() {
 
                   {/* Mobile Menu Open */}
                   <div className="-mr-2 flex items-center md:hidden">
-                    <Popover.Button className="bg-cyan-700 rounded-md p-2 inline-flex items-center justify-center text-gray-100 hover:bg-cyan-800 focus:outline-none focus:ring-2 focus-ring-inset focus:ring-white">
+                    <Popover.Button className="bg-stone-700 rounded-md p-2 inline-flex items-center justify-center text-gray-100 hover:bg-stone-800 focus:outline-none focus:ring-2 focus-ring-inset focus:ring-white">
                       <span className="sr-only">Open main menu</span>
                       <Bars3Icon className="h-6 w-6" aria-hidden="true" />
                     </Popover.Button>
@@ -125,7 +130,7 @@ export default function MainNav() {
               <div className="hidden md:flex md:items-center md:space-x-6">
                 {/* Profile dropdown (Desktop on the right) */}
                 <MenuDropDown linksList={userNavigation}>
-                  <div className="bg-white rounded-full flex p-1 text-sky-600 hover:text-sky-900 hover:bg-sky-300 text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500">
+                  <div className="bg-white rounded-full flex p-1 text-stone-600 hover:text-stone-900 hover:bg-stone-300 text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-stone-500">
                     <span className="sr-only">Open user menu</span>
                     <span className="user-photo">
                       {!!user?.picture ? (
@@ -160,7 +165,7 @@ export default function MainNav() {
                 <div className="px-5 pt-4 flex items-center justify-between">
                   <div className="text-gray-500">Photo Website</div>
                   <div className="-mr-2">
-                    <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-cyan-600">
+                    <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-stone-600">
                       <span className="sr-only">Close menu</span>
                       <XMarkIcon className="h-6 w-6" aria-hidden="true" />
                     </Popover.Button>

@@ -45,7 +45,7 @@ export default function Notifications(props: any) {
                       />
                     ) : (
                       <ExclamationIcon
-                        className="h-6 w-6 text-sky-400"
+                        className="h-6 w-6 text-stone-400"
                         aria-hidden="true"
                       />
                     )}
@@ -57,7 +57,7 @@ export default function Notifications(props: any) {
                   <div className="ml-4 flex-shrink-0 flex">
                     <button
                       type="button"
-                      className="bg-white rounded-md inline-flex text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500"
+                      className="bg-white rounded-md inline-flex text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-stone-500"
                       onClick={() => {
                         setOpen(false);
                       }}>

@@ -5,8 +5,14 @@ export default function Footer() {
   const footerNavigation = {
     main: [
       { name: "Home", href: "/" },
-      { name: "About", href: "/about/" },
-      { name: "Contact", href: "/contact/" },
+      {
+        name: "About",
+        href: "https://www.joemore.com/photo-uploader-with-aws-serverless-nextjs-and-tailwind/",
+      },
+      {
+        name: "Contact",
+        href: "https://www.joemore.com/contact/",
+      },
     ],
     social: [
       {
@@ -63,7 +69,7 @@ export default function Footer() {
   return (
     <>
       {/* Footer section */}
-      <footer className="bg-gradient-to-r from-sky-800 to-cyan-600">
+      <footer className="bg-gradient-to-r from-stone-800 to-stone-600">
         <div className="mx-auto max-w-md py-12 px-4 overflow-hidden sm:max-w-3xl sm:px-6 lg:max-w-7xl lg:px-8">
           <nav
             className="-mx-5 -my-2 flex flex-wrap justify-center"

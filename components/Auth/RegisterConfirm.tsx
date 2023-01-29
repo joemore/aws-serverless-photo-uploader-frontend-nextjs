@@ -89,7 +89,7 @@ export default function RegisterConfirm(props: any) {
                   type="text"
                   autoComplete="authCode"
                   required
-                  className="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded focus:outline-none focus:ring-sky-500 focus:border-sky-500 focus:z-10 sm:text-sm"
+                  className="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded focus:outline-none focus:ring-stone-500 focus:border-stone-500 focus:z-10 sm:text-sm"
                   placeholder="Enter 6 Digit Code _ _ _ _ _ _"
                   onInput={onChangeHandler}
                 />
@@ -99,16 +99,16 @@ export default function RegisterConfirm(props: any) {
             <div>
               <button
                 type="submit"
-                className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-sky-600 hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500">
+                className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-stone-600 hover:bg-stone-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-stone-500">
                 <span className="absolute left-0 inset-y-0 flex items-center pl-3">
                   {loading ? (
                     <RefreshIcon
-                      className="h-5 w-5 text-sky-200 animate-spin"
+                      className="h-5 w-5 text-stone-200 animate-spin"
                       aria-hidden="true"
                     />
                   ) : (
                     <LockOpenIcon
-                      className="h-5 w-5 text-sky-500 group-hover:text-sky-400"
+                      className="h-5 w-5 text-stone-500 group-hover:text-stone-400"
                       aria-hidden="true"
                     />
                   )}
@@ -119,7 +119,7 @@ export default function RegisterConfirm(props: any) {
 
             <div className="text-sm text-center">
               <span
-                className="cursor-pointer font-medium text-sky-600 hover:text-sky-500"
+                className="cursor-pointer font-medium text-stone-600 hover:text-stone-500"
                 onClick={resendConfirmationCode}>
                 Resend Confirmation Code?
               </span>

@@ -42,7 +42,7 @@ export default function PhotosoDisplay() {
         <h1>
           Displaying {photos.length} Photos{" "}
           <small
-            className="text-sky-500 cursor-pointer mt-3 mr-10 float-right"
+            className="text-stone-500 cursor-pointer mt-3 mr-10 float-right"
             onClick={() => getPhotos()}>
             refresh
           </small>
