@@ -39,7 +39,7 @@ export default function RegisterConfirm(props: any) {
       await Auth.confirmSignUp(email, authCode);
       await Auth.signIn(email, password);
       dispatch({ type: "setLoginState", loginState: LoginState.SignedIn });
-      setLoginState(LoginState.SignedIn);
+
       await router.push("/");
     } catch (error: any) {
       console.log("Error:", error);

@@ -46,10 +46,10 @@ export default function RegisterAccount() {
 
   // Error checking - front end only needs to do basic error checking, as we rely on the backend error checking mainly
   const validateForm = () => {
-    if (formState.region === "") {
-      setErrMsg("Please choose a region");
-      return false;
-    }
+    // if (formState.region === "") {
+    //   setErrMsg("Please choose a region");
+    //   return false;
+    // }
     if (formState.email === "") {
       setErrMsg("Please enter an email address");
       return false;

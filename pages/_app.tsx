@@ -7,6 +7,7 @@ import Head from "next/head";
 import { useEffect } from "react";
 import MainNav from "../components/UI/MainNav";
 import Footer from "../components/UI/Footer";
+import { LoaderLarge } from "../components/UI/Loaders";
 
 type AppProps = {
   pageProps: any;
@@ -100,15 +101,12 @@ const Auth = ({ children }: any) => {
         type: "setLoginState",
         loginState: loggedIn ? LoginState.SignedIn : LoginState.NotSignedIn,
       });
-      if (!loggedIn) router.push("/auth/signin");
+      // Redirect if not logged in and not on homepage
+      if (!loggedIn && router.pathname !== "/") router.push("/auth/signin");
     });
   }, []);
 
-  return loginState === LoginState.Loading ? (
-    <div className="text-xl italic w-64 mx-auto my-48">Loading...</div>
-  ) : (
-    <>{children}</>
-  );
+  return loginState === LoginState.Loading ? <LoaderLarge /> : <>{children}</>;
 };
 
 const isLoggedIn = async () => {

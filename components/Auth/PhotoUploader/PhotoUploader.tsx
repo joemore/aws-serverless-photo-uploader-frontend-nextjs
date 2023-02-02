@@ -108,9 +108,9 @@ export default function PhotoUploader() {
     }
     const { preSignedPutUrls, id } = await API.post("API", "/insert-photo", {
       body: {
-        original_name: originalFile.name,
+        originalName: originalFile.name,
         sizes,
-        creation_date: "TBD",
+        creationDate: "TBD",
         color1x1,
       },
     });

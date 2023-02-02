@@ -20,7 +20,7 @@ export default function PhotosoDisplay() {
         return photo.id === id ? { ...photo, deleting: true } : photo;
       })
     );
-    const result = await API.del("API", `/delete-photo/${id}`, {});
+    const result = await API.del("API", `/delete-photo/${id}?delete=TRUE`, {});
     setPhotos(photos.filter((photo: any) => photo.id !== id));
     setIsDeleting(false);
   };
@@ -40,7 +40,7 @@ export default function PhotosoDisplay() {
     <>
       <div className="px-4 py-6">
         <h1>
-          Displaying {photos.length} Photos{" "}
+          Displaying {photos?.length} Photos{" "}
           <small
             className="text-stone-500 cursor-pointer mt-3 mr-10 float-right"
             onClick={() => getPhotos()}>
@@ -49,7 +49,7 @@ export default function PhotosoDisplay() {
         </h1>
 
         <div className="border-t border-gray-200 mt-5 mx-8">
-          {photos.length === 0 ? (
+          {!photos?.length ? (
             <div className="text-xl italic text-center p-10 text-gray-300">
               No photos currently in library...
             </div>
@@ -102,7 +102,7 @@ export default function PhotosoDisplay() {
                     </div>
                   </div>
                   <div className="text-sm font-bold flex-1">
-                    {photo.original_name}
+                    {photo.originalName}
                   </div>
 
                   <div className="text-sm flex-1">
