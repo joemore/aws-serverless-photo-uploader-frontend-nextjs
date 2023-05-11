@@ -33,3 +33,8 @@ NEXT_PUBLIC_AWSAPIENDPOINT=https://XXXXXXXX.execute-api.us-east-1.amazonaws.com/
 ```
 
 Run `yarn dev` again and you should be able to login and start to upload photos.
+
+## Version 1.0.1 Update
+
+1. Backend now uses AWS SDK Version 3
+2. Frontend now paginates through the results using the new NextToken passed from the backend.
