@@ -1,4 +1,8 @@
-import { ArrowPathIcon, TrashIcon } from "@heroicons/react/24/outline";
+import {
+  ArrowDownIcon,
+  ArrowPathIcon,
+  TrashIcon,
+} from "@heroicons/react/24/outline";
 import { API } from "aws-amplify";
 import clsx from "clsx";
 import { useEffect, useState } from "react";
@@ -6,11 +10,20 @@ import { useEffect, useState } from "react";
 export default function PhotosoDisplay() {
   const [photos, setPhotos] = useState<any | []>([]);
   const [isDeleting, setIsDeleting] = useState(false);
+  const [nextPageToken, setNextPageToken] = useState<string | null>(null);
 
-  const getPhotos = async () => {
-    const result = await API.get("API", "/get-photos", {});
-    // console.log(result.photos);
-    setPhotos(result.photos);
+  const getPhotos = async (next: string | null = null) => {
+    const result = await API.get(
+      "API",
+      `/get-photos/${next ? `?next=${encodeURIComponent(next)}` : ""}`,
+      {}
+    );
+    if (next) {
+      setPhotos([...photos, ...result.photos]);
+    } else {
+      setPhotos(result.photos);
+    }
+    setNextPageToken(result.NextToken);
   };
 
   const deletePhoto = async (id: string) => {
@@ -139,6 +152,18 @@ export default function PhotosoDisplay() {
             })
           )}
         </div>
+
+        {/* If Next Token display a button  */}
+        {nextPageToken && (
+          <div className="mt-10 text-center mx-8 text-sm">
+            <button
+              className="bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold py-2 px-4 rounded"
+              onClick={() => getPhotos(nextPageToken)}>
+              <ArrowDownIcon className="h-4 w-4 inline-block mr-1" />
+              Load More
+            </button>
+          </div>
+        )}
 
         <div className="mt-10 text-right mx-8 text-sm">
           <h1>

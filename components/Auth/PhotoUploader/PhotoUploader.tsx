@@ -116,8 +116,6 @@ export default function PhotoUploader() {
     });
     const PhotoID = id;
 
-    // console.log(PhotoID, preSignedPutUrls);
-
     const thumbUploader = async (
       urls: any,
       size: string,
@@ -177,7 +175,6 @@ export default function PhotoUploader() {
       await s3Uploader(item);
       __recursion(files);
     } else {
-      console.log("DONE!!");
       setUploadTrigger(false);
     }
   };
@@ -274,8 +271,6 @@ export default function PhotoUploader() {
 
         <div className="border-t border-gray-200 mt-5 mx-8">
           {photos.map((photo: IPhotoUpload, index: number) => {
-            // console.log("THUMB", photo.thumb);
-
             const thumbSizesBytes =
               photo.info.bytes["32x32"] +
               photo.info.bytes["128x128"] +

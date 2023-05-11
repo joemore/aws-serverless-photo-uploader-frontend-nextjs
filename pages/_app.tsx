@@ -50,7 +50,6 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   };
 
   const reducer = (state: any, action: any) => {
-    // console.log("GLOBAL REDUCER", state, action);
     switch (action.type) {
       case "setLoginState":
         return {
