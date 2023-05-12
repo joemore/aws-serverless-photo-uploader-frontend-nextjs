@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import Resizer from "react-image-file-resizer";
 import { v4 as uuidv4 } from "uuid";
 import { UPLOAD_ORIGINAL } from "../../../pages/auth/photo-uploader";
+import { CloudArrowUpIcon } from "@heroicons/react/24/solid";
 
 export const resizeFile = (file: File, size: number, compression: number) => {
   return new Promise((resolve) => {
@@ -77,8 +78,6 @@ function getTopLeftPixelColor(file: File) {
     };
   });
 }
-
-// Possible Video to GIF conversion: https://mediajams.dev/post/video-to-gif-converter-with-react (I couldn't get the service worker to install properly!)
 
 export default function PhotoUploader() {
   const [photos, setPhotos] = useState<iPhotos | []>([]);
@@ -222,14 +221,37 @@ export default function PhotoUploader() {
   return (
     <>
       <div className="px-4 py-6">
-        <h1>Photo Uploader...</h1>
+        <h1 className="text-3xl font-bold mb-3">Photo Uploader</h1>
+        <p className="text-gray-500 mb-2">
+          This is the main Photo Uploading tool - currently it only allows JPEGs
+          to be selected, and it resizes any uploaded image to 400px (max width
+          or height), 128x128 pixels and 32x32 pixels. It also extracts the
+          average color of the image and stores it in the database (Because why
+          not...)
+        </p>
+        <p className="text-gray-500 mb-2">
+          The uploader is recursive, so it will upload one image at a time, and
+          will only move on to the next image once the previous one has been
+          uploaded.
+        </p>
+
+        <hr className="my-6" />
+
         <div className="my-3 flex justify-between">
-          <input
-            type="file"
-            multiple
-            onChange={handleFilesPicked}
-            accept="image/jpeg"
-          />
+          <label
+            htmlFor="file-picker"
+            className="relative bg-green-600 hover:bg-green-700 text-white flex items-center justify-center rounded-lg px-4 py-2">
+            <input
+              type="file"
+              id="file-picker"
+              multiple
+              onChange={handleFilesPicked}
+              accept="image/jpeg"
+              className="absolute inset-0 h-full w-full cursor-pointer rounded-md border-gray-300 opacity-0"
+            />
+            <CloudArrowUpIcon className="h-6 w-6 mr-2" />
+            <span>Select JPEG Images and start uploading...</span>
+          </label>
 
           <fieldset className="space-y-5">
             <div className="relative flex items-start">

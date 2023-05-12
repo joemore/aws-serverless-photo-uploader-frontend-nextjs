@@ -1,36 +1,8 @@
 import { Disclosure } from "@headlessui/react";
-import {
-  BellIcon,
-  CogIcon,
-  CreditCardIcon,
-  KeyIcon,
-  SquaresPlusIcon,
-  UserCircleIcon,
-} from "@heroicons/react/24/outline";
 import clsx from "clsx";
 import { useEffect, useState } from "react";
 
 import { Auth } from "aws-amplify";
-
-const navigation = [
-  { name: "Dashboard", href: "#", current: true },
-  { name: "Jobs", href: "#", current: false },
-  { name: "Applicants", href: "#", current: false },
-  { name: "Company", href: "#", current: false },
-];
-const subNavigation = [
-  { name: "Profile", href: "#", icon: UserCircleIcon, current: true },
-  { name: "Account", href: "#", icon: CogIcon, current: false },
-  { name: "Password", href: "#", icon: KeyIcon, current: false },
-  { name: "Notifications", href: "#", icon: BellIcon, current: false },
-  { name: "Billing", href: "#", icon: CreditCardIcon, current: false },
-  { name: "Integrations", href: "#", icon: SquaresPlusIcon, current: false },
-];
-const userNavigation = [
-  { name: "Your Profile", href: "#" },
-  { name: "Settings", href: "#" },
-  { name: "Sign out", href: "#" },
-];
 
 interface IUser {
   name: string;
@@ -86,6 +58,15 @@ export default function ProfilePage() {
     console.log("updatedUser", updatedUser);
   };
 
+  // Override Photo Change
+  const handlePhotoChange = (e: any) => {
+    e.preventDefault();
+    alert(
+      "This is a demo. You can't change your photo, but feel free to update the code so that you can!"
+    );
+    return;
+  };
+
   // Get users details at startup
   useEffect(() => {
     getUserDetails();
@@ -98,66 +79,6 @@ export default function ProfilePage() {
         className="relative overflow-hidden bg-stone-700 pb-32">
         {({ open }) => (
           <>
-            <nav
-              className={clsx(
-                open ? "bg-stone-900" : "bg-transparent",
-                "relative z-10 border-b border-teal-500 border-opacity-25 lg:border-none lg:bg-transparent"
-              )}>
-              <Disclosure.Panel className="bg-stone-900 lg:hidden">
-                <div className="space-y-1 px-2 pt-2 pb-3">
-                  {navigation.map((item) => (
-                    <Disclosure.Button
-                      key={item.name}
-                      as="a"
-                      href={item.href}
-                      className={clsx(
-                        item.current
-                          ? "bg-black bg-opacity-25"
-                          : "hover:bg-stone-800",
-                        "block rounded-md py-2 px-3 text-base font-medium text-white"
-                      )}>
-                      {item.name}
-                    </Disclosure.Button>
-                  ))}
-                </div>
-                <div className="border-t border-stone-800 pt-4 pb-3">
-                  <div className="flex items-center px-4">
-                    <div className="flex-shrink-0">
-                      <img
-                        className="h-10 w-10 rounded-full"
-                        src={user.imageUrl}
-                        alt=""
-                      />
-                    </div>
-                    <div className="ml-3">
-                      <div className="text-base font-medium text-white">
-                        {user.name}
-                      </div>
-                      <div className="text-sm font-medium text-stone-200">
-                        {user.email}
-                      </div>
-                    </div>
-                    <button
-                      type="button"
-                      className="ml-auto flex-shrink-0 rounded-full p-1 text-stone-200 hover:bg-stone-800 hover:text-white focus:bg-stone-900 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-stone-900">
-                      <span className="sr-only">View notifications</span>
-                      <BellIcon className="h-6 w-6" aria-hidden="true" />
-                    </button>
-                  </div>
-                  <div className="mt-3 px-2">
-                    {userNavigation.map((item) => (
-                      <Disclosure.Button
-                        key={item.name}
-                        as="a"
-                        href={item.href}
-                        className="block rounded-md py-2 px-3 text-base font-medium text-stone-200 hover:bg-stone-800 hover:text-white">
-                        {item.name}
-                      </Disclosure.Button>
-                    ))}
-                  </div>
-                </div>
-              </Disclosure.Panel>
-            </nav>
             <div
               aria-hidden="true"
               className={clsx(
@@ -167,11 +88,11 @@ export default function ProfilePage() {
               <div className="absolute inset-0 flex">
                 <div
                   className="h-full w-1/2"
-                  style={{ backgroundColor: "#0a527b" }}
+                  style={{ backgroundColor: "#292524" }}
                 />
                 <div
                   className="h-full w-1/2"
-                  style={{ backgroundColor: "#065d8c" }}
+                  style={{ backgroundColor: "#44403c" }}
                 />
               </div>
               <div className="relative flex justify-center">
@@ -183,19 +104,19 @@ export default function ProfilePage() {
                   xmlns="http://www.w3.org/2000/svg">
                   <path
                     d="M284.161 308H1465.84L875.001 182.413 284.161 308z"
-                    fill="#0369a1"
+                    fill="#57534e"
                   />
                   <path
                     d="M1465.84 308L16.816 0H1750v308h-284.16z"
-                    fill="#065d8c"
+                    fill="#57534e"
                   />
                   <path
                     d="M1733.19 0L284.161 308H0V0h1733.19z"
-                    fill="#0a527b"
+                    fill="#292524"
                   />
                   <path
                     d="M875.001 182.413L1733.19 0H16.816l858.185 182.413z"
-                    fill="#0a4f76"
+                    fill="#44403c"
                   />
                 </svg>
               </div>
@@ -215,36 +136,8 @@ export default function ProfilePage() {
         <div className="mx-auto max-w-screen-xl px-4 pb-6 sm:px-6 lg:px-8 lg:pb-16">
           <div className="overflow-hidden rounded-lg bg-white shadow">
             <div className="divide-y divide-gray-200 lg:grid lg:grid-cols-12 lg:divide-y-0 lg:divide-x">
-              <aside className="py-6 lg:col-span-3">
-                <nav className="space-y-1">
-                  {subNavigation.map((item) => (
-                    <a
-                      key={item.name}
-                      href={item.href}
-                      className={clsx(
-                        item.current
-                          ? "bg-teal-50 border-teal-500 text-teal-700 hover:bg-teal-50 hover:text-teal-700"
-                          : "border-transparent text-gray-900 hover:bg-gray-50 hover:text-gray-900",
-                        "group border-l-4 px-3 py-2 flex items-center text-sm font-medium"
-                      )}
-                      aria-current={item.current ? "page" : undefined}>
-                      <item.icon
-                        className={clsx(
-                          item.current
-                            ? "text-teal-500 group-hover:text-teal-500"
-                            : "text-gray-400 group-hover:text-gray-500",
-                          "flex-shrink-0 -ml-1 mr-3 h-6 w-6"
-                        )}
-                        aria-hidden="true"
-                      />
-                      <span className="truncate">{item.name}</span>
-                    </a>
-                  ))}
-                </nav>
-              </aside>
-
               <form
-                className="divide-y divide-gray-200 lg:col-span-9"
+                className="divide-y divide-gray-200 lg:col-span-12"
                 action="#"
                 method="POST">
                 {/* Profile section */}
@@ -254,7 +147,8 @@ export default function ProfilePage() {
                       Profile
                     </h2>
                     <p className="mt-1 text-sm text-gray-500">
-                      Currently you can only change your name...
+                      In this basic demo, you can currently only change your
+                      name... this is updated into the Cognito user pool itself.
                     </p>
                   </div>
 
@@ -326,12 +220,14 @@ export default function ProfilePage() {
                             <div className="group relative flex items-center justify-center rounded-md border border-gray-300 py-2 px-3 focus-within:ring-2 focus-within:ring-stone-500 focus-within:ring-offset-2 hover:bg-gray-50">
                               <label
                                 htmlFor="mobile-user-photo"
+                                onClick={handlePhotoChange}
                                 className="pointer-events-none relative text-sm font-medium leading-4 text-gray-700">
                                 <span>Change</span>
                                 <span className="sr-only"> user photo</span>
                               </label>
                               <input
                                 id="mobile-user-photo"
+                                onClick={handlePhotoChange}
                                 name="user-photo"
                                 type="file"
                                 className="absolute h-full w-full cursor-pointer rounded-md border-gray-300 opacity-0"
@@ -349,6 +245,7 @@ export default function ProfilePage() {
                         />
                         <label
                           htmlFor="desktop-user-photo"
+                          onClick={handlePhotoChange}
                           className="absolute inset-0 flex h-full w-full items-center justify-center bg-black bg-opacity-75 text-sm font-medium text-white opacity-0 focus-within:opacity-100 hover:opacity-100">
                           <span>Change</span>
                           <span className="sr-only"> user photo</span>

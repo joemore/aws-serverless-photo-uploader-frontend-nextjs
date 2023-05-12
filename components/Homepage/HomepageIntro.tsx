@@ -26,8 +26,9 @@ const itemsNotSignedIn = [
   },
   {
     name: "Create Backend",
-    description: "Need to spin up a new Backend, then view how to do it here",
-    href: "#",
+    description:
+      "Need to spin up a new Backend, then read my blog page here...",
+    href: "https://www.joemore.com/blogs/photo-uploader-tool-using-aws-and-nextjs#backend-setup",
     iconColor: "bg-yellow-500",
     icon: PencilSquareIcon,
   },
