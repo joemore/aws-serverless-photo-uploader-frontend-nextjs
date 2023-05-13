@@ -96,7 +96,13 @@ export default function Footer() {
             ))}
           </div>
           <p className="mt-8 text-center text-base text-gray-200">
-            &copy; 2022 Photo Website <small>V{VERSION}</small>
+            Made by{" "}
+            <a
+              href="https://joemore.com"
+              className="text-pink-300 hover:text-pink-500 font-extrabold">
+              joemore.com
+            </a>{" "}
+            <small>V{VERSION}</small>
           </p>
         </div>
       </footer>

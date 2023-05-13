@@ -11,7 +11,7 @@ import { UserIcon as UserIconSolid } from "@heroicons/react/24/solid";
 import { Auth } from "aws-amplify";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { GiHotDog } from "react-icons/gi";
+import { GiHotDog, GiMonkey } from "react-icons/gi";
 import { LoginState, useStateValue } from "../../context/state";
 import MenuDropDown from "./MenuDropDown";
 
@@ -100,7 +100,7 @@ export default function MainNav() {
                 <div className="flex items-center justify-between w-full md:w-auto">
                   <Link href="/">
                     <span className="sr-only">PhotoWhale</span>
-                    <GiHotDog className="text-5xl text-white" />
+                    <GiMonkey className="text-5xl text-pink-500" />
                   </Link>
 
                   {/* Mobile Menu Open */}
@@ -163,7 +163,7 @@ export default function MainNav() {
               className="absolute top-0 inset-x-0 p-2 transition transform origin-top md:hidden z-10">
               <div className="rounded-lg shadow-md bg-white ring-1 ring-black ring-opacity-5 overflow-hidden">
                 <div className="px-5 pt-4 flex items-center justify-between">
-                  <div className="text-gray-500">Photo Website</div>
+                  <div className="text-gray-500">Photo Uploader</div>
                   <div className="-mr-2">
                     <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-stone-600">
                       <span className="sr-only">Close menu</span>

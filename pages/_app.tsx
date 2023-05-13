@@ -70,7 +70,7 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   return (
     <StateProvider initialState={initialState} reducer={reducer}>
       <Head>
-        <title>Photo Website - A NextJS &amp; Tailwind Project</title>
+        <title>Photo Uploader - A NextJS &amp; Tailwind Project</title>
         <meta
           name="description"
           content="Frontend for AWS, ServerLess Photo Uploader tool"
