@@ -11,7 +11,7 @@ import { UserIcon as UserIconSolid } from "@heroicons/react/24/solid";
 import { Auth } from "aws-amplify";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { GiHotDog, GiMonkey } from "react-icons/gi";
+import { GiMonkey } from "react-icons/gi";
 import { LoginState, useStateValue } from "../../context/state";
 import MenuDropDown from "./MenuDropDown";
 
