@@ -292,7 +292,7 @@ export default function PhotoUploader() {
               className="absolute inset-0 h-full w-full cursor-pointer rounded-md border-gray-300 opacity-0"
             />
             <CloudArrowUpIcon className="h-6 w-6 mr-2" />
-            <span>Select JPEG Images and start uploading...</span>
+            <span>Select Images and start uploading...</span>
           </label>
 
           <fieldset className="space-y-5">
