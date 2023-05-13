@@ -38,3 +38,7 @@ Run `yarn dev` again and you should be able to login and start to upload photos.
 
 1. Backend now uses AWS SDK Version 3
 2. Frontend now paginates through the results using the new NextToken passed from the backend.
+
+## Version 1.0.2 Update
+
+* Added heic2any to convert HEIC files to JPG, also added in PNG, and GIF upload support.

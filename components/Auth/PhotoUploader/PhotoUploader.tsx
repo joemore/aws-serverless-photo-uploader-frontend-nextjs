@@ -7,6 +7,10 @@ import { v4 as uuidv4 } from "uuid";
 import { UPLOAD_ORIGINAL } from "../../../pages/auth/photo-uploader";
 import { CloudArrowUpIcon } from "@heroicons/react/24/solid";
 
+// import heic2any from "heic2any";
+
+const ACCEPT_TYPES = "image/jpeg,image/heic,image/png,image/gif";
+
 export const resizeFile = (file: File, size: number, compression: number) => {
   return new Promise((resolve) => {
     Resizer.imageFileResizer(
@@ -25,6 +29,35 @@ export const resizeFile = (file: File, size: number, compression: number) => {
     );
   });
 };
+
+async function convertToHEIC(fileInput: File) {
+  return new Promise((resolve, reject) => {
+    const heic2any = require("heic2any");
+
+    console.log("🧩 HEIC START");
+    heic2any({
+      blob: fileInput,
+      toType: "image/jpeg",
+      quality: 0.7,
+    }).then(
+      (blob: any) => {
+        //use the converted blob to do whatever
+        //maybe let newFile = new File(blob, fileName.jpg, { type: 'image/jpeg' }) or something
+        let newName = `${fileInput.name.split(".")[0]}.jpg`;
+        let heicFile = new File([blob], `${fileInput.name.split(".")[0]}.jpg`, {
+          type: "image/jpeg",
+        });
+        console.log("RESOLVE: ", newName, heicFile);
+        resolve(heicFile);
+      },
+      (error: any) => {
+        //handle errors
+        console.log("REJECT: ", error);
+        reject(error);
+      }
+    );
+  });
+}
 
 interface IPhotoUpload {
   file: File;
@@ -93,7 +126,16 @@ export default function PhotoUploader() {
       (photo) => photo.info.uuid === item.info.uuid
     );
 
-    const resized400: any = await resizeFile(originalFile, 400, 80);
+    let convertedFile: any = false;
+
+    // If file is HEIC then use this converter to convert to JPG
+    if (originalFile.type === "image/heic") {
+      convertedFile = await convertToHEIC(originalFile);
+    }
+
+    const fileUsed = convertedFile || originalFile;
+
+    const resized400: any = await resizeFile(fileUsed, 400, 80);
     const resized128: any = await resizeFile(resized400, 128, 60);
     const resized32: any = await resizeFile(resized128, 32, 40);
 
@@ -162,7 +204,7 @@ export default function PhotoUploader() {
 
     // Mark our items uploadStatus and COMPLETE
     const completed = await API.get("API", `/complete-photo/${PhotoID}`, {});
-    return originalFile.name;
+    return fileUsed.name;
   };
 
   const __recursion = async (files: iPhotos) => {
@@ -223,11 +265,11 @@ export default function PhotoUploader() {
       <div className="px-4 py-6">
         <h1 className="text-3xl font-bold mb-3">Photo Uploader</h1>
         <p className="text-gray-500 mb-2">
-          This is the main Photo Uploading tool - currently it only allows JPEGs
-          to be selected, and it resizes any uploaded image to 400px (max width
-          or height), 128x128 pixels and 32x32 pixels. It also extracts the
-          average color of the image and stores it in the database (Because why
-          not...)
+          This is the main Photo Uploading tool - currently it currently only
+          allows <b>JPG, PNG, GIF and HEIC</b> to be selected, and it resizes
+          any uploaded image to 400px (max width or height), 128x128 pixels and
+          32x32 pixels. It also extracts the average color of the image and
+          stores it in the database (Because why not...)
         </p>
         <p className="text-gray-500 mb-2">
           The uploader is recursive, so it will upload one image at a time, and
@@ -246,7 +288,7 @@ export default function PhotoUploader() {
               id="file-picker"
               multiple
               onChange={handleFilesPicked}
-              accept="image/jpeg"
+              accept={ACCEPT_TYPES}
               className="absolute inset-0 h-full w-full cursor-pointer rounded-md border-gray-300 opacity-0"
             />
             <CloudArrowUpIcon className="h-6 w-6 mr-2" />
