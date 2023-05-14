@@ -1,4 +1,10 @@
-# Photo Uploader Project
+# Photo Uploader Project (Frontend)
+
+<img
+  src="https://cdn.3dnames.co/uploads/joemore.com/blogs/photo-uploader/photo-uploader-with-screenshot-3-md.webp"
+  alt="AWS Overview"
+  title="AWS Overview"
+  style="display: block; margin: 0 auto 10px; max-width: 500px; border-radius:20px">
 
 Please note - this is part of an open source project written by me, Joe Gilmore - you can read the full details of this project here
 [joemore.com/photo-uploader-with-aws-serverless-nextjs-and-tailwind/](https://www.joemore.com/photo-uploader-with-aws-serverless-nextjs-and-tailwind/)
@@ -41,4 +47,4 @@ Run `yarn dev` again and you should be able to login and start to upload photos.
 
 ## Version 1.0.2 Update
 
-* Added heic2any to convert HEIC files to JPG, also added in PNG, and GIF upload support.
+- Added heic2any to convert HEIC files to JPG, also added in PNG, and GIF upload support.
