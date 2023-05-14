@@ -1,10 +1,8 @@
 # Photo Uploader Project (Frontend)
 
-<img
-  src="https://cdn.3dnames.co/uploads/joemore.com/blogs/photo-uploader/photo-uploader-with-screenshot-3-md.webp"
-  alt="AWS Overview"
-  title="AWS Overview"
-  style="display: block; margin: 0 auto 10px; max-width: 500px; border-radius:20px">
+<p align="center">
+  <img src="https://cdn.3dnames.co/uploads/joemore.com/blogs/photo-uploader/photo-uploader-with-screenshot-3-md.webp" width="400" title="NextJS Site">
+</p>
 
 Please note - this is part of an open source project written by me, Joe Gilmore - you can read the full details of this project here
 [joemore.com/photo-uploader-with-aws-serverless-nextjs-and-tailwind/](https://www.joemore.com/photo-uploader-with-aws-serverless-nextjs-and-tailwind/)
