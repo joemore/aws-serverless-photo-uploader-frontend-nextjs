@@ -86,10 +86,12 @@ export default function RegisterConfirm(props: any) {
                 <input
                   id="authCode"
                   name="authCode"
-                  type="text"
+                  inputMode="numeric"
+                  pattern="[0-9]*"
+                  maxLength={6}
                   autoComplete="authCode"
                   required
-                  className="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded focus:outline-none focus:ring-stone-500 focus:border-stone-500 focus:z-10 sm:text-sm"
+                  className="appearance-none text-center relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded focus:outline-none focus:ring-stone-500 focus:border-stone-500 focus:z-10 sm:text-sm"
                   placeholder="Enter 6 Digit Code _ _ _ _ _ _"
                   onInput={onChangeHandler}
                 />
