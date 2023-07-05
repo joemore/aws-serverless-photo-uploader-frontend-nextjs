@@ -112,6 +112,19 @@ function getTopLeftPixelColor(file: File) {
   });
 }
 
+const imgDimensions = (file: File) => {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.src = URL.createObjectURL(file);
+    img.onload = function () {
+      resolve({ width: img.width, height: img.height });
+    };
+    img.onerror = function () {
+      reject(Error("Failed to load image"));
+    };
+  });
+};
+
 export default function PhotoUploader() {
   const [photos, setPhotos] = useState<iPhotos | []>([]);
   const [uploadTrigger, setUploadTrigger] = useState(false);
@@ -135,11 +148,22 @@ export default function PhotoUploader() {
 
     const fileUsed = convertedFile || originalFile;
 
-    const resized400: any = await resizeFile(fileUsed, 400, 80);
-    const resized128: any = await resizeFile(resized400, 128, 60);
-    const resized32: any = await resizeFile(resized128, 32, 40);
+    // Get width and height of fileUsed
+    const { width, height }: any = await imgDimensions(fileUsed);
+    const smallestSide = width > height ? height : width;
+
+    // Resize to 400px, 128px and 32px - but only if our input image is larger than that
+    const size400 = smallestSide > 400 ? 400 : smallestSide;
+    const size128 = smallestSide > 128 ? 128 : smallestSide;
+    const size32 = smallestSide > 32 ? 32 : smallestSide;
+
+    // Run through the resizers
+    const resized400: any = await resizeFile(fileUsed, size400, 80);
+    const resized128: any = await resizeFile(resized400, size128, 60);
+    const resized32: any = await resizeFile(resized128, size32, 40);
 
     // Note  - our 1x1 image is only used to extract the avg color of the image - it's not uploaded
+    // Note2 - This fails on images with large aspect ratios that are not square - to find a fix soon!
     const resized1: any = await resizeFile(resized32, 1, 100);
     const color1x1 = await getTopLeftPixelColor(resized1);
 
